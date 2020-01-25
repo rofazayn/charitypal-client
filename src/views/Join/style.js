@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Home = styled.div`
+const Join = styled.div`
   height: 100vh;
   width: 100%;
   background: papayawhip;
@@ -11,5 +11,5 @@ const Home = styled.div`
 `;
 
 export const Styled = {
-  Home
+  Join
 };

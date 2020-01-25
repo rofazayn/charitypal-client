@@ -1,6 +1,6 @@
 import React from 'react';
 import { Styled } from './style';
-import { Container } from '@material-ui/core';
+import { Container, Divider } from '@material-ui/core';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -14,7 +14,9 @@ const Navbar = () => {
           <div className='navbar__menu'>
             <ul>
               <li>
-                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/' exact>
+                  Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to='/news'>News</NavLink>
@@ -24,6 +26,10 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink to='/donate'>Donate</NavLink>
+              </li>
+              <Divider orientation='vertical' />
+              <li>
+                <NavLink to='/join'>Join us</NavLink>
               </li>
             </ul>
           </div>

@@ -8,6 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import News from './views/News';
 import SuccessStories from './views/SuccessStories';
 import Donate from './views/Donate';
+import Join from './views/Join';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/news' component={News} />
             <Route exact path='/success-stories' component={SuccessStories} />
             <Route exact path='/donate' component={Donate} />
+            <Route exact path='/join' component={Join} />
             <Redirect to='/' />
           </Switch>
         </div>

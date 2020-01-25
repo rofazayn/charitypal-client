@@ -23,6 +23,11 @@ const GlobalStyle = createGlobalStyle`
       monospace;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .App {
     height: 100vh;
   }
