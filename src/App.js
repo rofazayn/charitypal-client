@@ -3,6 +3,7 @@ import Home from './views/Home';
 import GlobalStyle from './styles/globalStyles';
 import { ThemeProvider } from '@material-ui/core';
 import { theme as muiTheme } from './styles/muiTheme';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ThemeProvider theme={muiTheme}>
         <GlobalStyle />
         <div className='App'>
+          <Navbar />
           <Home />
         </div>
       </ThemeProvider>
