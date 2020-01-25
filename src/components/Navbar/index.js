@@ -1,6 +1,7 @@
 import React from 'react';
 import { Styled } from './style';
 import { Container } from '@material-ui/core';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -8,21 +9,21 @@ const Navbar = () => {
       <Container>
         <div className='navbar__inner'>
           <div className='navbar__logo'>
-            <a href='/'>CharityPal.</a>
+            <Link to='/'>CharityPal.</Link>
           </div>
           <div className='navbar__menu'>
             <ul>
               <li>
-                <a href='/'>Home</a>
+                <NavLink to='/'>Home</NavLink>
               </li>
               <li>
-                <a href='/'>News</a>
+                <NavLink to='/news'>News</NavLink>
               </li>
               <li>
-                <a href='/'>Success stories</a>
+                <NavLink to='/success-stories'>Success stories</NavLink>
               </li>
               <li>
-                <a href='/'>Donate</a>
+                <NavLink to='/donate'>Donate</NavLink>
               </li>
             </ul>
           </div>

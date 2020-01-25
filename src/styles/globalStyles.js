@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
@@ -22,9 +24,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .App {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
   }
 `;
