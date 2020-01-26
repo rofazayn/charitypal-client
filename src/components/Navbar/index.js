@@ -1,6 +1,6 @@
 import React from 'react';
 import { Styled } from './style';
-import { Container, Divider } from '@material-ui/core';
+import { Container, Divider, Typography } from '@material-ui/core';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -14,9 +14,11 @@ const Navbar = () => {
           <div className='navbar__menu'>
             <ul>
               <li>
-                <NavLink to='/' exact>
-                  Home
-                </NavLink>
+                <Typography variant='body2'>
+                  <NavLink to='/' exact>
+                    Home
+                  </NavLink>
+                </Typography>
               </li>
               <li>
                 <NavLink to='/news'>News</NavLink>
