@@ -44,11 +44,9 @@ const Navbar = styled.div`
           a {
             padding: 1rem;
             position: relative;
-            font-weight: 700;
+            font-weight: 500;
             font-family: 'Montserrat';
             color: ${({ theme }) => theme.palette.grey[700]};
-            font-size: 1rem;
-
             &::before {
               content: '';
               position: absolute;

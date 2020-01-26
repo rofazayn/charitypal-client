@@ -2,6 +2,7 @@ import React from 'react';
 import { Styled } from './style';
 import { Container, Divider, Typography } from '@material-ui/core';
 import { Link, NavLink } from 'react-router-dom';
+import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg';
 
 const Navbar = () => {
   return (
@@ -9,7 +10,9 @@ const Navbar = () => {
       <Container>
         <div className='navbar__inner'>
           <div className='navbar__logo'>
-            <Link to='/'>CharityPal.</Link>
+            <Link to='/'>
+              <LogoSvg />
+            </Link>
           </div>
           <div className='navbar__menu'>
             <ul>
