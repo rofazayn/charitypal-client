@@ -17,7 +17,7 @@ const Home = () => {
           alignItems='center'
           justify='space-between'
         >
-          <Grid item lg={6} className='hero'>
+          <Grid item md={6} className='hero'>
             <Typography variant='h4' className='hero__title'>
               We need your <span className='highlight'>help!</span>
             </Typography>
@@ -41,7 +41,7 @@ const Home = () => {
               $5/month, be a part of saving children's lives.
             </Typography>
           </Grid>
-          <Grid item lg={6} className='image'>
+          <Grid item md={6} className='image'>
             <div className='custom-image'>
               <img src={HomeHeroImage} alt='Children starving' />
             </div>

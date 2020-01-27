@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const News = styled.div`
   .hero {
-    max-width: 600px;
+    /* max-width: 600px; */
     &__title {
       margin-bottom: ${({ theme }) => `${theme.spacing(3)}px`};
     }
@@ -17,6 +17,20 @@ const News = styled.div`
     }
     &__caption {
       color: ${({ theme }) => theme.palette.grey[700]};
+    }
+  }
+  .news {
+    padding-top: ${({ theme }) => `${theme.spacing(15)}px`};
+    padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
+
+    &__loader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100px;
+      width: 100%;
+      /* background: papayawhip; */
+      border-radius: 20px;
     }
   }
 `;

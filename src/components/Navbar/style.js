@@ -4,11 +4,14 @@ const Navbar = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 120px;
   display: flex;
   align-items: center;
-  /* background: pink; */
+  background: white;
+  z-index: 9999;
+  overflow: hidden;
   hr {
     /* Vertical divider */
     height: 20px;

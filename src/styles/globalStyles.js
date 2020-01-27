@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  html, body {
+  html {
+    /* overflow-x: hidden; */
     overflow-x: hidden;
   }
 
@@ -74,9 +75,9 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: ${({ theme }) => `${theme.spacing(15)}px`};
+    padding-top: ${({ theme }) => `${theme.spacing(25)}px`};
     padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
-    /* text-align: center; */
+    z-index: 100;
   }
 `;
 

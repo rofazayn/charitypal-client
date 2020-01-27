@@ -9,6 +9,7 @@ const Footer = styled.footer`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.palette.grey[700]};
+  overflow: hidden;
   .footer {
     &__inner {
       display: flex;

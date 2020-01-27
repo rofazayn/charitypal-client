@@ -3,6 +3,7 @@ import { Styled } from './style';
 import { Container, Typography, Grid } from '@material-ui/core';
 import CPButton from '../../components/layout/CPButton/index';
 import { ReactComponent as NewsSvg } from '../../assets/svg/undraw_connected_world_wuay.svg';
+import NewsList from '../../components/NewsList';
 
 const News = () => {
   return (
@@ -14,12 +15,12 @@ const News = () => {
           alignItems='center'
           justify='space-between'
         >
-          <Grid item lg={6} className='image'>
+          <Grid item md={6} className='image'>
             <div className='custom-image'>
               <NewsSvg />
             </div>
           </Grid>
-          <Grid item lg={6} className='hero'>
+          <Grid item md={6} className='hero'>
             <Typography variant='h4' className='hero__title'>
               Charity latest <span className='highlight'>news.</span>
             </Typography>
@@ -36,6 +37,7 @@ const News = () => {
             </div>
           </Grid>
         </Grid>
+        <NewsList />
       </Container>
     </Styled.News>
   );
