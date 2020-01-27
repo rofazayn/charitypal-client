@@ -27,6 +27,7 @@ const Navbar = styled.div`
     &__logo {
       a {
         padding: 1rem;
+        padding-inline-start: 0;
         font-weight: 700;
         font-family: 'Montserrat';
         /* letter-spacing: 0.5px; */
@@ -70,6 +71,11 @@ const Navbar = styled.div`
               &::before {
                 background-color: ${({ theme }) => theme.palette.primary.main};
               }
+            }
+          }
+          &:last-of-type {
+            a {
+              padding-inline-end: 0;
             }
           }
         }

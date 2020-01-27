@@ -56,7 +56,27 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .custom-image {
-    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .page {
+    min-height: calc(100vh - 120px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: ${({ theme }) => `${theme.spacing(15)}px`};
+    padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
+    /* text-align: center; */
   }
 `;
 

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <Styled.Home>
+    <Styled.Home className='page'>
       <Container>
         <Grid
           container
@@ -42,12 +42,9 @@ const Home = () => {
             </Typography>
           </Grid>
           <Grid item lg={6} className='image'>
-            <img
-              src={HomeHeroImage}
-              alt='Children starving'
-              width={'100%'}
-              className='custom-image'
-            />
+            <div className='custom-image'>
+              <img src={HomeHeroImage} alt='Children starving' />
+            </div>
           </Grid>
         </Grid>
       </Container>

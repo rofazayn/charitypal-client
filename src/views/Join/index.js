@@ -4,7 +4,7 @@ import { Container, Typography } from '@material-ui/core';
 
 const Join = () => {
   return (
-    <Styled.Join>
+    <Styled.Join className='page'>
       <Container>
         <Typography variant='h3'>Join</Typography>
       </Container>

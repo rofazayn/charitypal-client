@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
 const Home = styled.div`
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* text-align: center; */
   .hero {
     max-width: 600px;
     &__title {

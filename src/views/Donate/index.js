@@ -4,7 +4,7 @@ import { Container, Typography } from '@material-ui/core';
 
 const Donate = () => {
   return (
-    <Styled.Donate>
+    <Styled.Donate className='page'>
       <Container>
         <Typography variant='h3'>Donate</Typography>
       </Container>
