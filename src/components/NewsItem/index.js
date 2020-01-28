@@ -19,7 +19,7 @@ const NewsItem = ({ article: { title, content, urlToImage, url } }) => {
           </Grid>
           <Grid item md={6} className='info'>
             <Typography variant='h5' className='info__title'>
-              {title && `${title.slice(0, 80)}...`}
+              {title && `${title.slice(0, 60)}...`}
             </Typography>
             <Typography variant='body1' className='info__paragraph'>
               {content && `${content.slice(0, 150)}...`}

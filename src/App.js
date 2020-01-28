@@ -13,7 +13,6 @@ import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Footer from './components/Footer';
 
 function App() {
-  console.log(muiTheme);
   return (
     <>
       <StylesProvider injectFirst>

@@ -4,7 +4,7 @@ const CPButton = styled(Button)`
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  /* color: white; */
   padding: 1rem 2rem;
   font-size: 1.2rem;
   border-radius: 10px;
