@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow-y: scroll;
+    overflow-y: scroll !important; 
   }
 
   html, body {
@@ -70,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
     svg {
       width: 100%;
       height: auto;
+      max-height: 550px;
     }
   }
 
