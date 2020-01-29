@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Styled } from './style';
-import { Container, Typography, Grid, Modal } from '@material-ui/core';
+import { Container, Typography, Grid } from '@material-ui/core';
 import { ReactComponent as PlayButtonIcon } from '../../assets/icons/play.svg';
 import HomeHeroImage from '../../assets/images/home-hero.png';
 import CPButton from '../../components/layout/CPButton/index';
