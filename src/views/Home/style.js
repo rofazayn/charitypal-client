@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Home = styled.div`
   .hero {
-    max-width: 600px;
+    /* max-width: 600px; */
     &__title {
       margin-bottom: ${({ theme }) => `${theme.spacing(3)}px`};
     }

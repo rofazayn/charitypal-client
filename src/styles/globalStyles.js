@@ -9,10 +9,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  html {
-    /* overflow-x: hidden; */
-    overflow-x: hidden;
+  body {
     overflow-y: scroll;
+  }
+
+  html, body {
+
+    overflow-x: hidden;
   }
 
   body {
