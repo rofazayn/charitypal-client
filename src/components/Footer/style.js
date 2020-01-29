@@ -32,6 +32,9 @@ const Footer = styled.footer`
     &__sponsors {
       display: flex;
       align-items: center;
+      @media (max-width: 800px) {
+        display: none;
+      }
       p {
         margin-inline-end: ${({ theme }) => `${theme.spacing(2)}px`};
       }
@@ -39,6 +42,9 @@ const Footer = styled.footer`
     &__legal {
       display: flex;
       align-items: center;
+      @media (max-width: 800px) {
+        display: none;
+      }
       ul {
         display: flex;
         list-style: none;

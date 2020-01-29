@@ -37,6 +37,9 @@ const Navbar = styled.div`
       }
     }
     &__menu {
+      @media (max-width: 800px) {
+        display: none;
+      }
       ul {
         display: flex;
         list-style: none;
