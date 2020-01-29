@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     /* overflow-x: hidden; */
     overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   body {
@@ -70,12 +71,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .page {
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 240px);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: ${({ theme }) => `${theme.spacing(25)}px`};
+    padding-top: ${({ theme }) => `${theme.spacing(8)}px`};
     padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
     z-index: 100;
   }
