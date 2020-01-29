@@ -15,6 +15,11 @@ const SuccessStories = () => {
           alignItems='center'
           justify='space-between'
         >
+          <Grid item md={6} className='image'>
+            <div className='custom-image'>
+              <SuccessSvg />
+            </div>
+          </Grid>
           <Grid item md={6} className='hero'>
             <Typography variant='h4' className='hero__title'>
               Pals' success <span className='highlight'>stories!</span>
@@ -31,11 +36,6 @@ const SuccessStories = () => {
                 Tell your story now
               </CPButton>
               {/* </Link> */}
-            </div>
-          </Grid>
-          <Grid item md={6} className='image'>
-            <div className='custom-image'>
-              <SuccessSvg />
             </div>
           </Grid>
         </Grid>

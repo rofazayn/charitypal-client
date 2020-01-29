@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* background-color: papayawhip; */
+    background-color: white;
 
   }
 
@@ -76,7 +76,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: ${({ theme }) => `${theme.spacing(8)}px`};
+    padding-top: ${({ theme }) => `${theme.spacing(10)}px`};
     padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
     z-index: 100;
   }

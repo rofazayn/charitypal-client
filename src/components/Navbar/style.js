@@ -9,7 +9,7 @@ const Navbar = styled.div`
   height: 120px;
   display: flex;
   align-items: center;
-  background: white;
+  /* background: white; */
   z-index: 9999;
   overflow: hidden;
   hr {
