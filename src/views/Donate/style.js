@@ -18,9 +18,18 @@ const Donate = styled.div`
       display: grid;
       grid-template-columns: 1fr;
       grid-row-gap: 1.33rem;
-      .button-container {
-        display: flex;
-        justify-content: flex-end;
+      .button-wrapper {
+        text-align: right;
+        button {
+          width: 100%;
+        }
+        @media (max-width: 600px) {
+          text-align: left;
+          margin-top: 1.33rem;
+          button {
+            width: 100%;
+          }
+        }
       }
     }
   }

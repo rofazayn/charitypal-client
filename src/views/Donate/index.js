@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { ReactComponent as StepOneSvg } from '../../assets/svg/undraw_virtual_assistant_jjo2.svg';
 import CPButton from '../../components/layout/CPButton';
+import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg';
 
 const Donate = () => {
   const [subscription, setSubscription] = useState('');
@@ -52,8 +53,13 @@ const Donate = () => {
                 <TextField variant='outlined' label='Full name' fullWidth />
                 <TextField variant='outlined' label='Email' fullWidth />
 
-                <Grid container alignItems='center' justify='space-between'>
-                  <Grid item xs={8}>
+                <Grid
+                  container
+                  alignItems='center'
+                  justify='space-between'
+                  spacing={2}
+                >
+                  <Grid item xs={12} sm={7} md={6} lg={8}>
                     <FormControl variant='outlined' fullWidth>
                       <InputLabel
                         ref={inputLabel}
@@ -67,6 +73,7 @@ const Donate = () => {
                         value={subscription}
                         onChange={handleChange}
                         labelWidth={labelWidth}
+                        fullWidth
                       >
                         <MenuItem value={1}>Donate once</MenuItem>
                         <MenuItem value={2}>Donate monthly</MenuItem>
@@ -74,8 +81,20 @@ const Donate = () => {
                     </FormControl>
                   </Grid>
 
-                  <Grid item xs={4} className='button-container'>
-                    <CPButton variant='contained' color='primary'>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={5}
+                    md={6}
+                    lg={4}
+                    className='button-wrapper'
+                  >
+                    <CPButton
+                      variant='contained'
+                      color='primary'
+                      size='large'
+                      endIcon={<ArrowRight />}
+                    >
                       Proceed
                     </CPButton>
                   </Grid>

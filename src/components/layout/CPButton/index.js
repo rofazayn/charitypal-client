@@ -12,6 +12,8 @@ const CPButton = styled(Button)`
   font-weight: 500;
   /* letter-spacing: 1px; */
   text-transform: none;
+  margin: 0 auto;
+  overflow: hidden;
   svg {
     margin-inline-start: ${({ theme }) => `${theme.spacing(2)}px`};
   }
