@@ -11,8 +11,12 @@ import Donate from './views/Donate';
 import Join from './views/Join';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Footer from './components/Footer';
+import useScrollToTop from './hooks/useScrollToTop';
 
 function App() {
+  // Scroll app component to top
+  const { app } = useScrollToTop();
+
   return (
     <>
       <StylesProvider injectFirst>
@@ -20,7 +24,7 @@ function App() {
           <SCThemeProvider theme={muiTheme}>
             <CssBaseline />
             <GlobalStyle />
-            <div className='App'>
+            <div className='App' ref={app}>
               <Navbar />
               <Switch>
                 <Route exact path='/' component={Home} />

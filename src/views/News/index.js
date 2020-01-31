@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Styled } from './style';
 import { Container, Typography, Grid } from '@material-ui/core';
 import CPButton from '../../components/layout/CPButton/index';
@@ -6,6 +6,19 @@ import { ReactComponent as NewsSvg } from '../../assets/svg/undraw_connected_wor
 import NewsList from '../../components/NewsList';
 
 const News = () => {
+  const [allNews, setAllNews] = useState([]);
+  const initialLoadNews = async () => {
+    try {
+      const fetchedNews = await fetch(
+        'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
+      );
+      const parsedNews = await fetchedNews.json();
+      setAllNews(parsedNews.articles);
+    } catch (error) {
+      console.log('Error fetching news');
+    }
+  };
+
   return (
     <Styled.News className='page'>
       <Container>
@@ -30,14 +43,20 @@ const News = () => {
               campaigning, charity law & regulation and social enterprise.
               Latest News & Analysis.
             </Typography>
-            <div className='hero__buttons'>
-              <CPButton variant='contained' color='primary'>
-                Read more
-              </CPButton>
-            </div>
+            {!allNews.length > 0 && (
+              <div className='hero__buttons'>
+                <CPButton
+                  variant='contained'
+                  color='primary'
+                  onClick={initialLoadNews}
+                >
+                  Let's read the news
+                </CPButton>
+              </div>
+            )}
           </Grid>
         </Grid>
-        <NewsList />
+        {allNews.length > 0 && <NewsList allNews={allNews} />}
       </Container>
     </Styled.News>
   );

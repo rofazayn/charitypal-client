@@ -7,22 +7,9 @@ import React, {
 } from 'react';
 import { Grid, Typography, Divider, CircularProgress } from '@material-ui/core';
 import NewsItem from '../NewsItem';
+import { Styled } from './style';
 
-const NewsList = () => {
-  const [allNews, setAllNews] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
-    )
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        setAllNews(data.articles);
-      });
-  }, []);
-
+const NewsList = ({ allNews }) => {
   const newsReducer = (state, action) => {
     switch (action.type) {
       case 'start':
@@ -41,6 +28,18 @@ const NewsList = () => {
     }
   };
 
+  const [shouldSetRef, setShouldSetRef] = useState(false);
+
+  useEffect(() => {
+    if (allNews.length > 0) {
+      setShouldSetRef(true);
+    }
+
+    return () => {
+      setShouldSetRef(false);
+    };
+  }, [allNews]);
+
   const perPage = 3;
 
   const [newsState, dispatch] = useReducer(newsReducer, {
@@ -58,56 +57,58 @@ const NewsList = () => {
     setTimeout(() => {
       const newData = allNews.slice(after, after + perPage);
       dispatch({ type: 'loaded', newData });
-    }, 0);
+    }, 500);
   }, [after, allNews]);
 
   const loader = useRef(load);
+  const [element, setElement] = useState(null);
+
   const observer = useRef(
     new IntersectionObserver(
       entries => {
         const first = entries[0];
         if (first.isIntersecting) {
-          fetch(
-            'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
-          )
-            .then(response => {
-              return response.json();
-            })
-            .then(data => {
-              setAllNews(data.articles);
-              loader.current();
-            });
+          loader.current();
         }
       },
       { threshold: 0 }
     )
   );
-  const [element, setElement] = useState(null);
+
+  useEffect(() => {}, [observer, shouldSetRef]);
 
   useEffect(() => {
-    loader.current = load;
-  }, [load]);
+    if (shouldSetRef) {
+      loader.current = load;
 
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement) {
-      currentObserver.observe(currentElement);
+      return () => {
+        loader.current = null;
+      };
     }
+  }, [load, shouldSetRef]);
 
-    return () => {
+  useEffect(() => {
+    if (shouldSetRef) {
+      const currentElement = element;
+      const currentObserver = observer.current;
+
       if (currentElement) {
-        currentObserver.unobserve(currentElement);
+        currentObserver.observe(currentElement);
       }
-    };
-  }, [element]);
+
+      return () => {
+        if (currentElement) {
+          currentObserver.unobserve(currentElement);
+        }
+      };
+    }
+  }, [element, shouldSetRef, observer]);
 
   return (
-    <Grid container spacing={10} className='news'>
+    <Styled.NewsList container spacing={10} className='news'>
       {data !== null &&
         data.map((article, key) => <NewsItem key={key} article={article} />)}
-      {more || loading ? (
+      {allNews.length > 0 && (more || loading) ? (
         <>
           <Divider style={{ width: '100%' }} />
           <Grid item className='news__loader' ref={setElement}>
@@ -118,7 +119,7 @@ const NewsList = () => {
           </Grid>
         </>
       ) : null}
-    </Grid>
+    </Styled.NewsList>
   );
 };
 

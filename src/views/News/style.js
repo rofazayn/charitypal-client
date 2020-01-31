@@ -20,8 +20,8 @@ const News = styled.div`
     }
   }
   .news {
-    padding-top: ${({ theme }) => `${theme.spacing(15)}px`};
-    padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`};
+    /* padding-top: ${({ theme }) => `${theme.spacing(15)}px`};
+    padding-bottom: ${({ theme }) => `${theme.spacing(15)}px`}; */
 
     &__loader {
       display: flex;

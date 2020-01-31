@@ -18,9 +18,12 @@ const NewsItem = ({ article: { title, content, urlToImage, url } }) => {
             <img src={urlToImage} alt='News' />
           </Grid>
           <Grid item md={6} className='info'>
-            <Typography variant='h5' className='info__title'>
-              {title && `${title.slice(0, 60)}...`}
-            </Typography>
+            <a href={url} target='_blank' rel='noopener noreferrer'>
+              <Typography variant='h5' className='info__title'>
+                {title && `${title.slice(0, 60)}...`}
+              </Typography>
+            </a>
+
             <Typography variant='body1' className='info__paragraph'>
               {content && `${content.slice(0, 150)}...`}
             </Typography>
