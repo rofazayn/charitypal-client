@@ -10,12 +10,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    overflow-y: scroll !important; 
+    /* overflow-y: scroll !important;  */
   }
 
   html, body {
-
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
 
   body {
@@ -40,8 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .App {
-    height: 100vh;
-    
+    height: 100vh;    
   }
 
   .highlight {
