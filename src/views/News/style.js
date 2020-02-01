@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const News = styled.div`
+const News = styled(motion.div)`
   .hero {
     /* max-width: 600px; */
     &__title {

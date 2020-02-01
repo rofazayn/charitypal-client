@@ -4,7 +4,12 @@ import { Container, Typography } from '@material-ui/core';
 
 const Join = () => {
   return (
-    <Styled.Join className='page'>
+    <Styled.Join
+      className='page'
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Container>
         <Typography variant='h3'>Join</Typography>
       </Container>

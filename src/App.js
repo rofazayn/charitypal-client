@@ -12,6 +12,7 @@ import Join from './views/Join';
 import { ThemeProvider as SCThemeProvider } from 'styled-components';
 import Footer from './components/Footer';
 import useScrollToTop from './hooks/useScrollToTop';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   // Scroll app component to top
@@ -26,18 +27,21 @@ function App() {
             <GlobalStyle />
             <div className='App' ref={app}>
               <Navbar />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/news' component={News} />
-                <Route
-                  exact
-                  path='/success-stories'
-                  component={SuccessStories}
-                />
-                <Route exact path='/donate' component={Donate} />
-                <Route exact path='/join' component={Join} />
-                <Redirect to='/' />
-              </Switch>
+              <AnimatePresence>
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/news' component={News} />
+                  <Route
+                    exact
+                    path='/success-stories'
+                    component={SuccessStories}
+                  />
+                  <Route exact path='/donate' component={Donate} />
+                  <Route exact path='/join' component={Join} />
+                  <Redirect to='/' />
+                </Switch>
+              </AnimatePresence>
+
               <Footer />
             </div>
           </SCThemeProvider>

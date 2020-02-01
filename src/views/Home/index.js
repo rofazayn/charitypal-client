@@ -25,7 +25,12 @@ const Home = () => {
   };
 
   return (
-    <Styled.Home className='page'>
+    <Styled.Home
+      className='page'
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Container>
         <Grid
           container

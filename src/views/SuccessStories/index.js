@@ -7,7 +7,12 @@ import { ReactComponent as SuccessSvg } from '../../assets/svg/undraw_celebratio
 
 const SuccessStories = () => {
   return (
-    <Styled.SuccessStories className='page'>
+    <Styled.SuccessStories
+      className='page'
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Container>
         <Grid
           container

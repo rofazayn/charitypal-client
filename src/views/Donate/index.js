@@ -27,7 +27,12 @@ const Donate = () => {
     setSubscription(event.target.value);
   };
   return (
-    <Styled.Donate className='page'>
+    <Styled.Donate
+      className='page'
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Container>
         <Grid
           container

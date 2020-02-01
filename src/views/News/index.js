@@ -20,7 +20,12 @@ const News = () => {
   };
 
   return (
-    <Styled.News className='page'>
+    <Styled.News
+      className='page'
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Container>
         <Grid
           container
