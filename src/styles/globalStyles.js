@@ -9,10 +9,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  html {
+    overflow-y: hidden;
+
+  }
+
   html, body {
     height: 100%;
     /* max-width: 100vw; */
     overflow-x: hidden;
+    
   }
 
   body {
@@ -23,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: white;
+    overflow-y: scroll !important;
 
   }
 
@@ -39,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
   .App {
     height: 100%;
     min-height: 100vh;
+    overflow-y: hidden;
   }
 
   .highlight {

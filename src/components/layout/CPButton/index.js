@@ -30,7 +30,7 @@ const CPButton = styled(Button)`
     padding-inline-end: 1rem;
   }
   .MuiCircularProgress-circle {
-    color: white;
+    color: black;
   }
 `;
 
