@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import { Styled } from './style';
-import { Container, Typography, Grid } from '@material-ui/core';
+import {
+  Container,
+  Typography,
+  Grid,
+  CircularProgress
+} from '@material-ui/core';
 import CPButton from '../../components/layout/CPButton/index';
 import { ReactComponent as NewsSvg } from '../../assets/svg/undraw_connected_world_wuay.svg';
 import NewsList from '../../components/NewsList';
 
 const News = () => {
+  const [buttonLoading, setButtonIsLoading] = useState(false);
   const [allNews, setAllNews] = useState([]);
   const initialLoadNews = async () => {
+    setButtonIsLoading(true);
     try {
       const fetchedNews = await fetch(
         'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
       );
       const parsedNews = await fetchedNews.json();
       setAllNews(parsedNews.articles);
+      setButtonIsLoading(false);
     } catch (error) {
+      setButtonIsLoading(false);
+
       console.log('Error fetching news');
     }
   };
@@ -54,6 +64,11 @@ const News = () => {
                   variant='contained'
                   color='primary'
                   onClick={initialLoadNews}
+                  endIcon={
+                    buttonLoading ? (
+                      <CircularProgress color='primary' size={22} />
+                    ) : null
+                  }
                 >
                   Let's read the news
                 </CPButton>

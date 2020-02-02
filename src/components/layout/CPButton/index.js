@@ -14,13 +14,23 @@ const CPButton = styled(Button)`
   text-transform: none;
   margin: 0 auto;
   overflow: hidden;
+  
   svg {
-    margin-inline-start: ${({ theme }) => `${theme.spacing(2)}px`};
+    /* padding: ${({ theme }) => `${theme.spacing(2)}px`}; */
   }
   &.text-button {
     color: black;
     padding: 1rem;
     transform: translateX(-1rem);
+  }
+  .MuiButton-endIcon {
+    padding-inline-start: 1rem;
+  }
+  .MuiButton-startIcon {
+    padding-inline-end: 1rem;
+  }
+  .MuiCircularProgress-circle {
+    color: white;
   }
 `;
 
