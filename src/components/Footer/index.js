@@ -10,7 +10,7 @@ const Footer = () => {
       <Container>
         <div className='footer__inner'>
           <div className='footer__balance'>
-            <span className='value'>$ 27.520</span>
+            <span className='value'>$ 0.00</span>
             <Typography variant='body2'>gathered so far</Typography>
           </div>
           <div className='footer__sponsors'>
