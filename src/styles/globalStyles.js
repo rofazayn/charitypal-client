@@ -14,10 +14,10 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
-  html, body {
+  html, body, .App {
     height: 100%;
     /* max-width: 100vw; */
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     
   }
 

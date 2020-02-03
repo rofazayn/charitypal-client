@@ -81,7 +81,7 @@ const Navbar = styled.div`
           }
           &:last-of-type {
             a {
-              padding-inline-end: 0;
+              margin-inline-end: 0;
             }
           }
         }

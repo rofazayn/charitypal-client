@@ -15,7 +15,7 @@ import CPButton from '../../components/layout/CPButton';
 import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg';
 
 const Donate = () => {
-  const [subscription, setSubscription] = useState('');
+  const [subscription, setSubscription] = useState(1);
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
 
@@ -81,7 +81,9 @@ const Donate = () => {
                         fullWidth
                       >
                         <MenuItem value={1}>Donate once</MenuItem>
-                        <MenuItem value={2}>Donate monthly</MenuItem>
+                        <MenuItem value={2} disabled>
+                          Donate monthly (Coming soon)
+                        </MenuItem>
                       </Select>
                     </FormControl>
                   </Grid>
