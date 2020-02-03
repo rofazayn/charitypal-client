@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    user-select: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   html {
