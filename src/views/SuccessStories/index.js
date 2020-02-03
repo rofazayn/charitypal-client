@@ -4,6 +4,7 @@ import { Container, Typography, Grid } from '@material-ui/core';
 import CPButton from '../../components/layout/CPButton';
 // import { Link } from 'react-router-dom';
 import { ReactComponent as SuccessSvg } from '../../assets/svg/undraw_celebration_0jvk.svg';
+import { motion } from 'framer-motion';
 
 const SuccessStories = () => {
   return (
@@ -22,7 +23,13 @@ const SuccessStories = () => {
         >
           <Grid item md={6} className='image'>
             <div className='custom-image'>
-              <SuccessSvg />
+              <motion.div
+                initial={{ scale: 0.8 }}
+                exit={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+              >
+                <SuccessSvg />
+              </motion.div>
             </div>
           </Grid>
           <Grid item md={6} className='hero'>

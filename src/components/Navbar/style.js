@@ -12,6 +12,7 @@ const Navbar = styled.div`
   /* background: white; */
   z-index: 9999;
   overflow: hidden;
+
   hr {
     /* Vertical divider */
     height: 20px;
@@ -26,8 +27,14 @@ const Navbar = styled.div`
       padding: 1rem 0;
       justify-content: space-between;
       align-items: center;
+      @media (max-width: 800px) {
+        flex-direction: column;
+      }
     }
     &__logo {
+      @media (max-width: 800px) {
+        margin-bottom: 1rem;
+      }
       a {
         padding: 1rem;
         padding-inline-start: 0;
@@ -37,9 +44,9 @@ const Navbar = styled.div`
       }
     }
     &__menu {
-      @media (max-width: 800px) {
+      /* @media (max-width: 800px) {
         display: none;
-      }
+      } */
       ul {
         display: flex;
         list-style: none;

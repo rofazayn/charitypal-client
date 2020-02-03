@@ -32,6 +32,14 @@ const Donate = styled(motion.div)`
           }
         }
       }
+      .hero__caption {
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        svg {
+          margin-inline-end: 1rem;
+        }
+      }
     }
   }
 `;

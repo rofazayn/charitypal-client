@@ -9,6 +9,7 @@ import {
 import CPButton from '../../components/layout/CPButton/index';
 import { ReactComponent as NewsSvg } from '../../assets/svg/undraw_connected_world_wuay.svg';
 import NewsList from '../../components/NewsList';
+import { motion } from 'framer-motion';
 
 const News = () => {
   const [buttonLoading, setButtonIsLoading] = useState(false);
@@ -45,7 +46,13 @@ const News = () => {
         >
           <Grid item md={6} className='image'>
             <div className='custom-image'>
-              <NewsSvg />
+              <motion.div
+                initial={{ scale: 0.8 }}
+                exit={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+              >
+                <NewsSvg />
+              </motion.div>
             </div>
           </Grid>
           <Grid item md={6} className='hero'>

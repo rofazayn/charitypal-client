@@ -1,6 +1,6 @@
 import React from 'react';
 import { Styled } from './style';
-import { Container, Divider, Typography } from '@material-ui/core';
+import { Container, Divider } from '@material-ui/core';
 import { Link, NavLink } from 'react-router-dom';
 import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg';
 
@@ -17,25 +17,23 @@ const Navbar = () => {
           <div className='navbar__menu'>
             <ul>
               <li>
-                <Typography variant='body2'>
-                  <NavLink to='/' exact>
-                    Home
-                  </NavLink>
-                </Typography>
-              </li>
-              <li>
-                <NavLink to='/news'>News</NavLink>
-              </li>
-              <li>
-                <NavLink to='/success-stories'>Success stories</NavLink>
+                <NavLink to='/' exact>
+                  Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to='/donate'>Donate</NavLink>
               </li>
               <Divider orientation='vertical' />
               <li>
-                <NavLink to='/join'>Join us</NavLink>
+                <NavLink to='/news'>News</NavLink>
               </li>
+              {/* <li>
+                <NavLink to='/success-stories'>Success stories</NavLink>
+              </li> */}
+              {/* <li>
+                <NavLink to='/join'>Join us</NavLink>
+              </li> */}
             </ul>
           </div>
         </div>
