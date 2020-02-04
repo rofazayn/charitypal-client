@@ -13,4 +13,14 @@ const useScrollToTop = () => {
   return { app };
 };
 
+export const useScrollToTopWithoutRouteChange = step => {
+  const app = useRef();
+
+  useEffect(() => {
+    app.current.scrollIntoView(true);
+  }, [step]);
+
+  return { app };
+};
+
 export default useScrollToTop;

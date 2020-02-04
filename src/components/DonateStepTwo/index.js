@@ -1,11 +1,12 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import {
   Grid,
   Typography,
   InputAdornment,
   FormControl,
   InputLabel,
-  OutlinedInput
+  OutlinedInput,
+  CircularProgress
 } from '@material-ui/core';
 import CPButton from '../layout/CPButton';
 import { ReactComponent as DollarSignIcon } from '../../assets/icons/dollar-sign.svg';
@@ -16,17 +17,10 @@ import { ReactComponent as AlertIcon } from '../../assets/icons/alert-circle.svg
 import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg';
 import { motion } from 'framer-motion';
 import { ReactComponent as StepTwoSvg } from '../../assets/svg/undraw_credit_card_payment_yb88.svg';
-import donationReducer, {
-  initialDonationState
-} from '../../reducers/DonationReducer';
 import { Formik } from 'formik';
+// import Axios from 'axios';
 
-const DonateStepTwo = () => {
-  const [donationState, donationDispatch] = useReducer(
-    donationReducer,
-    initialDonationState
-  );
-
+const DonateStepTwo = ({ nextStep, data, dispatch }) => {
   return (
     <Grid container spacing={10} alignItems='center' justify='space-between'>
       <Grid item md={6} className='image'>
@@ -55,13 +49,42 @@ const DonateStepTwo = () => {
           </Typography>
           <div className='step-one'>
             <Formik
-              initialValues={donationState}
+              initialValues={data}
               onSubmit={values => {
-                // Do something
-                console.log('Not yet ready.');
+                setTimeout(() => {
+                  nextStep(3);
+                }, 1800);
+
+                // Need a spark plan on Firebase for this one to work
+                // Axios.post(
+                //   'https://europe-west1-charitypal-d3b98.cloudfunctions.net/tokenize',
+                //   {
+                //     number: values.cardNumber,
+                //     exp_month: values.expMonth,
+                //     exp_year: values.expYear,
+                //     cvc: values.cvv,
+                //     name: data.name
+                //   }
+                // )
+                //   .then(res => {
+                //     Axios.post(
+                //       'https://europe-west1-charitypal-d3b98.cloudfunctions.net/charge',
+                //       {
+                //         token: res.data.id,
+                //         amount: values.amount,
+                //         receipt_email: data.email
+                //       }
+                //     )
+                //       .then(data => {
+                //         console.log(data);
+                //         nextStep(3);
+                //       })
+                //       .catch(err => console.log(err.response));
+                //   })
+                //   .catch(err => console.log(err.response));
               }}
             >
-              {({ handleSubmit, handleChange, values }) => (
+              {({ handleSubmit, handleChange, values, isSubmitting }) => (
                 <form onSubmit={handleSubmit}>
                   <FormControl fullWidth variant='outlined'>
                     <InputLabel htmlFor='outlined-adornment-year'>
@@ -109,7 +132,7 @@ const DonateStepTwo = () => {
                               fullWidth
                               value={values.expMonth}
                               onChange={handleChange}
-                              name='expYear'
+                              name='expMonth'
                               endAdornment={
                                 <InputAdornment position='end'>
                                   <CalendarIcon
@@ -181,6 +204,9 @@ const DonateStepTwo = () => {
                         <OutlinedInput
                           variant='outlined'
                           label='Amount'
+                          value={values.amount}
+                          onChange={handleChange}
+                          name='amount'
                           placeholder='Choose an amount in USD'
                           endAdornment={
                             <InputAdornment position='end'>
@@ -205,7 +231,13 @@ const DonateStepTwo = () => {
                         variant='contained'
                         color='primary'
                         size='large'
-                        endIcon={<CheckIcon />}
+                        endIcon={
+                          isSubmitting ? (
+                            <CircularProgress color='primary' size={22} />
+                          ) : (
+                            <CheckIcon />
+                          )
+                        }
                         type='submit'
                       >
                         Donate

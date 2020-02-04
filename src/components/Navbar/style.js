@@ -12,6 +12,9 @@ const Navbar = styled.div`
   /* background: white; */
   z-index: 9999;
   overflow: hidden;
+  @media (max-width: 800px) {
+    height: 150px;
+  }
 
   hr {
     /* Vertical divider */
@@ -33,7 +36,7 @@ const Navbar = styled.div`
     }
     &__logo {
       @media (max-width: 800px) {
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
       }
       a {
         padding: 1rem;

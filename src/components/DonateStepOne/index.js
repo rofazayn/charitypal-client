@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import {
   Grid,
   Typography,
@@ -6,29 +6,22 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  CircularProgress
 } from '@material-ui/core';
 import CPButton from '../layout/CPButton';
 import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg';
 import { motion } from 'framer-motion';
 import { ReactComponent as StepOneSvg } from '../../assets/svg/undraw_virtual_assistant_jjo2.svg';
 import { Formik } from 'formik';
-import donationReducer, {
-  initialDonationState
-} from '../../reducers/DonationReducer';
 
-const DonateStepOne = ({ nextStep }) => {
+const DonateStepOne = ({ nextStep, data, dispatch }) => {
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
 
   useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-
-  const [donationState, donationDispatch] = useReducer(
-    donationReducer,
-    initialDonationState
-  );
 
   return (
     <Grid container spacing={10} alignItems='center' justify='space-between'>
@@ -53,13 +46,15 @@ const DonateStepOne = ({ nextStep }) => {
         </Typography>
         <div className='step-one'>
           <Formik
-            initialValues={donationState}
+            initialValues={data}
             onSubmit={values => {
-              // donationDispatch({ type: 'UPDATE', payload: values });
-              nextStep(2);
+              dispatch({ type: 'UPDATE', payload: values });
+              setTimeout(() => {
+                nextStep(2);
+              }, 1000);
             }}
           >
-            {({ handleSubmit, handleChange, values }) => (
+            {({ handleSubmit, handleChange, values, isSubmitting }) => (
               <form onSubmit={handleSubmit}>
                 <TextField
                   variant='outlined'
@@ -121,7 +116,13 @@ const DonateStepOne = ({ nextStep }) => {
                       variant='contained'
                       color='primary'
                       size='large'
-                      endIcon={<ArrowRight />}
+                      endIcon={
+                        isSubmitting ? (
+                          <CircularProgress color='primary' size={22} />
+                        ) : (
+                          <ArrowRight />
+                        )
+                      }
                       type='submit'
                     >
                       Proceed
