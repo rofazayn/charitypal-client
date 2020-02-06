@@ -5,7 +5,7 @@ export const initialDonationState = {
   cardNumber: '',
   expMonth: '',
   expYear: '',
-  cvv: '',
+  cvc: '',
   amount: ''
 };
 

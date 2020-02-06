@@ -6,7 +6,8 @@ import {
   FormControl,
   InputLabel,
   OutlinedInput,
-  CircularProgress
+  CircularProgress,
+  FormHelperText
 } from '@material-ui/core';
 import CPButton from '../layout/CPButton';
 import { ReactComponent as DollarSignIcon } from '../../assets/icons/dollar-sign.svg';
@@ -19,19 +20,15 @@ import { motion } from 'framer-motion';
 import { ReactComponent as StepTwoSvg } from '../../assets/svg/undraw_credit_card_payment_yb88.svg';
 import { Formik } from 'formik';
 // import Axios from 'axios';
+import vSchema from './validationSchema';
+// import Axios from 'axios';
 
 const DonateStepTwo = ({ nextStep, data, dispatch }) => {
   return (
     <Grid container spacing={10} alignItems='center' justify='space-between'>
       <Grid item md={6} className='image'>
         <div className='custom-image'>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-          >
-            <StepTwoSvg />
-          </motion.div>
+          <StepTwoSvg />
         </div>
       </Grid>
       <Grid item md={6} className='hero'>
@@ -50,14 +47,15 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
           <div className='step-one'>
             <Formik
               initialValues={data}
+              validationSchema={vSchema}
               onSubmit={values => {
                 setTimeout(() => {
                   nextStep(3);
-                }, 1800);
+                }, 1000);
 
-                // Need a spark plan on Firebase for this one to work
+                // Need a spark plan on Firebase for this one to work online
                 // Axios.post(
-                //   'https://europe-west1-charitypal-d3b98.cloudfunctions.net/tokenize',
+                //   'http://localhost:5000/charitypal-d3b98/europe-west1/tokenize',
                 //   {
                 //     number: values.cardNumber,
                 //     exp_month: values.expMonth,
@@ -68,7 +66,7 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                 // )
                 //   .then(res => {
                 //     Axios.post(
-                //       'https://europe-west1-charitypal-d3b98.cloudfunctions.net/charge',
+                //       'http://localhost:5000/charitypal-d3b98/europe-west1/charge',
                 //       {
                 //         token: res.data.id,
                 //         amount: values.amount,
@@ -84,10 +82,20 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                 //   .catch(err => console.log(err.response));
               }}
             >
-              {({ handleSubmit, handleChange, values, isSubmitting }) => (
+              {({
+                handleSubmit,
+                handleChange,
+                values,
+                isSubmitting,
+                touched,
+                errors
+              }) => (
                 <form onSubmit={handleSubmit}>
                   <FormControl fullWidth variant='outlined'>
-                    <InputLabel htmlFor='outlined-adornment-year'>
+                    <InputLabel
+                      htmlFor='outlined-adornment-year'
+                      error={touched.cardNumber && errors.cardNumber && true}
+                    >
                       Card number
                     </InputLabel>
                     <OutlinedInput
@@ -97,6 +105,9 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                       onChange={handleChange}
                       name='cardNumber'
                       placeholder="Please enter your card's number"
+                      error={
+                        touched.cardNumber && errors.cardNumber ? true : false
+                      }
                       endAdornment={
                         <InputAdornment position='end'>
                           <CreditCardIcon
@@ -105,6 +116,11 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                         </InputAdornment>
                       }
                     />
+                    <FormHelperText error>
+                      {touched.cardNumber && errors.cardNumber
+                        ? errors.cardNumber
+                        : ''}
+                    </FormHelperText>
                   </FormControl>
 
                   <Grid
@@ -122,7 +138,14 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                       >
                         <Grid item xs={6} sm={6} md={6} lg={6}>
                           <FormControl fullWidth variant='outlined'>
-                            <InputLabel htmlFor='outlined-adornment-month'>
+                            <InputLabel
+                              htmlFor='outlined-adornment-month'
+                              error={
+                                touched.expMonth && errors.expMonth
+                                  ? true
+                                  : false
+                              }
+                            >
                               MM
                             </InputLabel>
                             <OutlinedInput
@@ -133,6 +156,11 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                               value={values.expMonth}
                               onChange={handleChange}
                               name='expMonth'
+                              error={
+                                touched.expMonth && errors.expMonth
+                                  ? true
+                                  : false
+                              }
                               endAdornment={
                                 <InputAdornment position='end'>
                                   <CalendarIcon
@@ -145,7 +173,12 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                         </Grid>
                         <Grid item xs={6} sm={6} md={6} lg={6}>
                           <FormControl fullWidth variant='outlined'>
-                            <InputLabel htmlFor='outlined-adornment-year'>
+                            <InputLabel
+                              htmlFor='outlined-adornment-year'
+                              error={
+                                touched.expYear && errors.expYear ? true : false
+                              }
+                            >
                               YY
                             </InputLabel>
                             <OutlinedInput
@@ -156,6 +189,9 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                               onChange={handleChange}
                               name='expYear'
                               fullWidth
+                              error={
+                                touched.expYear && errors.expYear ? true : false
+                              }
                               endAdornment={
                                 <InputAdornment position='end'>
                                   <CalendarIcon
@@ -170,16 +206,20 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                     </Grid>
                     <Grid item xs={12} sm={6} md={6} lg={6}>
                       <FormControl fullWidth variant='outlined'>
-                        <InputLabel htmlFor='outlined-adornment-year'>
-                          Code (CVV)
+                        <InputLabel
+                          htmlFor='outlined-adornment-year'
+                          error={touched.cvc && errors.cvc ? true : false}
+                        >
+                          Code (CVC)
                         </InputLabel>
                         <OutlinedInput
                           variant='outlined'
                           label='Code (CVV)'
                           placeholder='Card code'
-                          value={values.cvv}
-                          name='cvv'
+                          value={values.cvc}
+                          name='cvc'
                           onChange={handleChange}
+                          error={touched.cvc && errors.cvc ? true : false}
                           endAdornment={
                             <InputAdornment position='end'>
                               <KeyIcon style={{ color: 'gray', width: 18 }} />
@@ -192,13 +232,18 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
 
                   <Grid
                     container
-                    alignItems='center'
+                    alignItems={
+                      touched.amount && errors.amount ? 'flex-start' : 'center'
+                    }
                     justify='space-between'
                     spacing={2}
                   >
                     <Grid item xs={12} sm={7} md={6} lg={8}>
                       <FormControl fullWidth variant='outlined'>
-                        <InputLabel htmlFor='outlined-adornment-year'>
+                        <InputLabel
+                          htmlFor='outlined-adornment-year'
+                          error={touched.amount && errors.amount ? true : false}
+                        >
                           Amount
                         </InputLabel>
                         <OutlinedInput
@@ -208,6 +253,7 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                           onChange={handleChange}
                           name='amount'
                           placeholder='Choose an amount in USD'
+                          error={touched.amount && errors.amount ? true : false}
                           endAdornment={
                             <InputAdornment position='end'>
                               <DollarSignIcon
@@ -216,6 +262,9 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                             </InputAdornment>
                           }
                         />
+                        <FormHelperText error>
+                          {touched.amount && errors.amount ? errors.amount : ''}
+                        </FormHelperText>
                       </FormControl>
                     </Grid>
 
@@ -239,6 +288,7 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                           )
                         }
                         type='submit'
+                        disabled={isSubmitting}
                       >
                         Donate
                       </CPButton>

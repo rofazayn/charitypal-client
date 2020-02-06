@@ -13,9 +13,11 @@ import { motion } from 'framer-motion';
 
 const News = () => {
   const [buttonLoading, setButtonIsLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [allNews, setAllNews] = useState([]);
   const initialLoadNews = async () => {
     setButtonIsLoading(true);
+    setIsFetching(true);
     try {
       const fetchedNews = await fetch(
         'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
@@ -23,9 +25,10 @@ const News = () => {
       const parsedNews = await fetchedNews.json();
       setAllNews(parsedNews.articles);
       setButtonIsLoading(false);
+      setIsFetching(false);
     } catch (error) {
       setButtonIsLoading(false);
-
+      setIsFetching(false);
       console.log('Error fetching news');
     }
   };
@@ -76,6 +79,7 @@ const News = () => {
                       <CircularProgress color='primary' size={22} />
                     ) : null
                   }
+                  disabled={isFetching}
                 >
                   Let's read the news
                 </CPButton>

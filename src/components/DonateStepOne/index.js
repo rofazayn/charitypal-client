@@ -7,13 +7,14 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  CircularProgress
+  CircularProgress,
+  FormHelperText
 } from '@material-ui/core';
 import CPButton from '../layout/CPButton';
 import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg';
-import { motion } from 'framer-motion';
 import { ReactComponent as StepOneSvg } from '../../assets/svg/undraw_virtual_assistant_jjo2.svg';
 import { Formik } from 'formik';
+import vSchema from './validationSchema';
 
 const DonateStepOne = ({ nextStep, data, dispatch }) => {
   const inputLabel = React.useRef(null);
@@ -27,13 +28,7 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
     <Grid container spacing={10} alignItems='center' justify='space-between'>
       <Grid item md={6} className='image'>
         <div className='custom-image'>
-          <motion.div
-            initial={{ scale: 0.8 }}
-            exit={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-          >
-            <StepOneSvg />
-          </motion.div>
+          <StepOneSvg />
         </div>
       </Grid>
       <Grid item md={6} className='hero'>
@@ -47,6 +42,7 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
         <div className='step-one'>
           <Formik
             initialValues={data}
+            validationSchema={vSchema}
             onSubmit={values => {
               dispatch({ type: 'UPDATE', payload: values });
               setTimeout(() => {
@@ -54,7 +50,14 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
               }, 1000);
             }}
           >
-            {({ handleSubmit, handleChange, values, isSubmitting }) => (
+            {({
+              handleSubmit,
+              handleChange,
+              values,
+              isSubmitting,
+              touched,
+              errors
+            }) => (
               <form onSubmit={handleSubmit}>
                 <TextField
                   variant='outlined'
@@ -63,6 +66,8 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                   label='Full name'
                   fullWidth
                   onChange={handleChange}
+                  error={touched.name && errors.name ? true : false}
+                  helperText={touched.name && errors.name ? errors.name : ''}
                 />
                 <TextField
                   variant='outlined'
@@ -71,6 +76,8 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                   label='Email'
                   fullWidth
                   onChange={handleChange}
+                  error={touched.email && errors.email ? true : false}
+                  helperText={touched.email && errors.email ? errors.email : ''}
                 />
 
                 <Grid
@@ -84,6 +91,11 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                       <InputLabel
                         ref={inputLabel}
                         id='demo-controlled-open-select-label'
+                        error={
+                          touched.subscription && errors.subscription
+                            ? true
+                            : false
+                        }
                       >
                         Subscription
                       </InputLabel>
@@ -95,12 +107,22 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                         onChange={handleChange}
                         labelWidth={labelWidth}
                         fullWidth
+                        error={
+                          touched.subscription && errors.subscription
+                            ? true
+                            : false
+                        }
                       >
                         <MenuItem value={1}>Donate once</MenuItem>
                         <MenuItem value={2} disabled>
                           Donate monthly (Coming soon)
                         </MenuItem>
                       </Select>
+                      <FormHelperText error>
+                        {touched.subscription && errors.subscription
+                          ? errors.subscription
+                          : ''}
+                      </FormHelperText>
                     </FormControl>
                   </Grid>
 
@@ -124,6 +146,7 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                         )
                       }
                       type='submit'
+                      disabled={isSubmitting}
                     >
                       Proceed
                     </CPButton>

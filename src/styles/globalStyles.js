@@ -78,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
     svg {
       width: 100%;
       height: auto;
-      max-height: 550px;
+      max-height: 50vh;
     }
   }
 
