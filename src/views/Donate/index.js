@@ -1,13 +1,13 @@
-import React, { useState, useReducer } from 'react';
-import { Styled } from './style';
-import { Container } from '@material-ui/core';
-import DonateStepOne from '../../components/DonateStepOne';
-import DonateStepTwo from '../../components/DonateStepTwo';
-import DonateStepThree from '../../components/DonateStepThree';
+import React, { useState, useReducer } from "react";
+import { Styled } from "./style";
+import { Container } from "@material-ui/core";
+import DonateStepOne from "../../components/DonateStepOne";
+import DonateStepTwo from "../../components/DonateStepTwo";
+import DonateStepThree from "../../components/DonateStepThree";
 import donationReducer, {
   initialDonationState
-} from '../../reducers/DonationReducer';
-import { useScrollToTopWithoutRouteChange } from '../../hooks/useScrollToTop';
+} from "../../reducers/DonationReducer";
+import { useScrollToTopWithoutRouteChange } from "../../hooks/useScrollToTop";
 
 const Donate = () => {
   const [step, setStep] = useState(1);
@@ -27,7 +27,7 @@ const Donate = () => {
   return (
     <Styled.Donate
       ref={app}
-      className='page'
+      className="page"
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       animate={{ opacity: 1 }}

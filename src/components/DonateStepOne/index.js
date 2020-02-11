@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   Grid,
   Typography,
@@ -9,12 +9,12 @@ import {
   MenuItem,
   CircularProgress,
   FormHelperText
-} from '@material-ui/core';
-import CPButton from '../layout/CPButton';
-import { ReactComponent as ArrowRight } from '../../assets/icons/arrow-right.svg';
-import { ReactComponent as StepOneSvg } from '../../assets/svg/undraw_virtual_assistant_jjo2.svg';
-import { Formik } from 'formik';
-import vSchema from './validationSchema';
+} from "@material-ui/core";
+import CPButton from "../layout/CPButton";
+import { ReactComponent as ArrowRight } from "../../assets/icons/arrow-right.svg";
+import { ReactComponent as StepOneSvg } from "../../assets/svg/undraw_virtual_assistant_jjo2.svg";
+import { Formik } from "formik";
+import vSchema from "./validationSchema";
 
 const DonateStepOne = ({ nextStep, data, dispatch }) => {
   const inputLabel = React.useRef(null);
@@ -25,26 +25,26 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
   }, []);
 
   return (
-    <Grid container spacing={10} alignItems='center' justify='space-between'>
-      <Grid item md={6} className='image'>
-        <div className='custom-image'>
+    <Grid container spacing={10} alignItems="center" justify="space-between">
+      <Grid item md={6} className="image">
+        <div className="custom-image">
           <StepOneSvg />
         </div>
       </Grid>
-      <Grid item md={6} className='hero'>
-        <Typography variant='h4' className='hero__title'>
-          Children needs <span className='highlight'>you!</span>
+      <Grid item md={6} className="hero">
+        <Typography variant="h4" className="hero__title">
+          Children needs <span className="highlight">you!</span>
         </Typography>
-        <Typography variant='body1' className='hero__paragraph'>
+        <Typography variant="body1" className="hero__paragraph">
           Help us draw a smile on the faces of underprivileged children, buy
           them food, or pay for their education.
         </Typography>
-        <div className='step-one'>
+        <div className="step-one">
           <Formik
             initialValues={data}
             validationSchema={vSchema}
             onSubmit={values => {
-              dispatch({ type: 'UPDATE', payload: values });
+              dispatch({ type: "UPDATE", payload: values });
               setTimeout(() => {
                 nextStep(2);
               }, 1000);
@@ -60,37 +60,41 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <TextField
-                  variant='outlined'
-                  name='name'
+                  variant="outlined"
+                  name="name"
                   value={values.name}
-                  label='Full name'
+                  label="Full name"
                   fullWidth
                   onChange={handleChange}
                   error={touched.name && errors.name ? true : false}
-                  helperText={touched.name && errors.name ? errors.name : ''}
+                  helperText={touched.name && errors.name ? errors.name : ""}
                 />
                 <TextField
-                  variant='outlined'
-                  name='email'
+                  variant="outlined"
+                  name="email"
                   value={values.email}
-                  label='Email'
+                  label="Email"
                   fullWidth
                   onChange={handleChange}
                   error={touched.email && errors.email ? true : false}
-                  helperText={touched.email && errors.email ? errors.email : ''}
+                  helperText={touched.email && errors.email ? errors.email : ""}
                 />
 
                 <Grid
                   container
-                  alignItems='center'
-                  justify='space-between'
+                  alignItems={
+                    touched.subscription && errors.subscription
+                      ? "flex-start"
+                      : "center"
+                  }
+                  justify="space-between"
                   spacing={2}
                 >
                   <Grid item xs={12} sm={7} md={6} lg={8}>
-                    <FormControl variant='outlined' fullWidth>
+                    <FormControl variant="outlined" fullWidth>
                       <InputLabel
                         ref={inputLabel}
-                        id='demo-controlled-open-select-label'
+                        id="demo-controlled-open-select-label"
                         error={
                           touched.subscription && errors.subscription
                             ? true
@@ -100,9 +104,9 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                         Subscription
                       </InputLabel>
                       <Select
-                        labelId='demo-controlled-open-select-label'
-                        name='subscription'
-                        id='demo-controlled-open-select'
+                        labelId="demo-controlled-open-select-label"
+                        name="subscription"
+                        id="demo-controlled-open-select"
                         value={values.subscription}
                         onChange={handleChange}
                         labelWidth={labelWidth}
@@ -121,7 +125,7 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                       <FormHelperText error>
                         {touched.subscription && errors.subscription
                           ? errors.subscription
-                          : ''}
+                          : ""}
                       </FormHelperText>
                     </FormControl>
                   </Grid>
@@ -132,20 +136,20 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                     sm={5}
                     md={6}
                     lg={4}
-                    className='button-wrapper'
+                    className="button-wrapper"
                   >
                     <CPButton
-                      variant='contained'
-                      color='primary'
-                      size='large'
+                      variant="contained"
+                      color="primary"
+                      size="large"
                       endIcon={
                         isSubmitting ? (
-                          <CircularProgress color='primary' size={22} />
+                          <CircularProgress color="primary" size={22} />
                         ) : (
                           <ArrowRight />
                         )
                       }
-                      type='submit'
+                      type="submit"
                       disabled={isSubmitting}
                     >
                       Proceed
@@ -153,7 +157,7 @@ const DonateStepOne = ({ nextStep, data, dispatch }) => {
                   </Grid>
                 </Grid>
 
-                <Typography variant='caption' className='hero__caption'>
+                <Typography variant="caption" className="hero__caption">
                   Your donation can be cancelled within 24 hours.
                 </Typography>
               </form>
