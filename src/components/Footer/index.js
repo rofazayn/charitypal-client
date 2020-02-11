@@ -25,6 +25,15 @@ const Footer = () => {
               <li>
                 <Link to='/'>Cookies</Link>
               </li>
+              <li>
+                <a
+                  href='https://github.com/rofazayn/CharityPal'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Github
+                </a>
+              </li>
             </ul>
           </div>
         </div>
