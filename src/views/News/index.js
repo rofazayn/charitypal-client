@@ -4,7 +4,7 @@ import {
   Container,
   Typography,
   Grid,
-  CircularProgress
+  CircularProgress,
 } from '@material-ui/core';
 import CPButton from '../../components/layout/CPButton/index';
 import { ReactComponent as NewsSvg } from '../../assets/svg/undraw_connected_world_wuay.svg';
@@ -12,6 +12,8 @@ import NewsList from '../../components/NewsList';
 import { motion } from 'framer-motion';
 
 const News = () => {
+  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
   const [buttonLoading, setButtonIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [allNews, setAllNews] = useState([]);
@@ -20,14 +22,23 @@ const News = () => {
     setIsFetching(true);
     try {
       const fetchedNews = await fetch(
-        'https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383'
+        `${proxyUrl}https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383`,
+        {
+          headers: {
+            origin: 'x-requested-with',
+          },
+        }
       );
       const parsedNews = await fetchedNews.json();
-      setAllNews(parsedNews.articles);
-      setButtonIsLoading(false);
-      setIsFetching(false);
+      console.log(parsedNews);
+      if (parsedNews.articles && parsedNews.articles.length > 0) {
+        setAllNews(parsedNews.articles);
+        setButtonIsLoading(false);
+        setIsFetching(false);
+      }
     } catch (error) {
       setButtonIsLoading(false);
+      setAllNews([]);
       setIsFetching(false);
       console.log('Error fetching news');
     }
