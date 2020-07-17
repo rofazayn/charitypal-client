@@ -89,8 +89,10 @@ const News = () => {
                     ) : null
                   }
                   disabled={isFetching}
+                  disabled={true}
                 >
-                  Let's read the news
+                  Currently Down!
+                  {/* Let's read the news */}
                 </CPButton>
               </div>
             )}
