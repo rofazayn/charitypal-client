@@ -22,7 +22,7 @@ const News = () => {
     setIsFetching(true);
     try {
       const fetchedNews = await fetch(
-        `${proxyUrl}https://newsapi.org/v2/everything?q=charity&sortby=relevancy&apiKey=01b1e9e43b2f4868a6bf9402a4137383`,
+        `http://localhost:5000/charitypal-d3b98/europe-west1/fetchNews`,
         {
           headers: {
             origin: 'x-requested-with',
@@ -31,8 +31,8 @@ const News = () => {
       );
       const parsedNews = await fetchedNews.json();
       console.log(parsedNews);
-      if (parsedNews.articles && parsedNews.articles.length > 0) {
-        setAllNews(parsedNews.articles);
+      if (parsedNews && parsedNews.length > 0) {
+        setAllNews(parsedNews);
         setButtonIsLoading(false);
         setIsFetching(false);
       }
