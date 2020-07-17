@@ -12,8 +12,6 @@ import NewsList from '../../components/NewsList';
 import { motion } from 'framer-motion';
 
 const News = () => {
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
   const [buttonLoading, setButtonIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [allNews, setAllNews] = useState([]);

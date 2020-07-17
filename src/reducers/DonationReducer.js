@@ -2,11 +2,11 @@ export const initialDonationState = {
   name: '',
   email: '',
   subscription: '',
-  cardNumber: '',
-  expMonth: '',
-  expYear: '',
-  cvc: '',
-  amount: ''
+  cardNumber: '4242424242424242',
+  expMonth: '5',
+  expYear: '2023',
+  cvc: '123',
+  amount: '',
 };
 
 const donationReducer = (state = initialDonationState, action) => {

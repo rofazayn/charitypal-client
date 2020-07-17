@@ -7,7 +7,7 @@ import {
   InputLabel,
   OutlinedInput,
   CircularProgress,
-  FormHelperText
+  FormHelperText,
 } from '@material-ui/core';
 import CPButton from '../layout/CPButton';
 import { ReactComponent as DollarSignIcon } from '../../assets/icons/dollar-sign.svg';
@@ -48,7 +48,7 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
             <Formik
               initialValues={data}
               validationSchema={vSchema}
-              onSubmit={values => {
+              onSubmit={(values) => {
                 setTimeout(() => {
                   nextStep(3);
                 }, 1000);
@@ -88,7 +88,7 @@ const DonateStepTwo = ({ nextStep, data, dispatch }) => {
                 values,
                 isSubmitting,
                 touched,
-                errors
+                errors,
               }) => (
                 <form onSubmit={handleSubmit}>
                   <FormControl fullWidth variant='outlined'>
