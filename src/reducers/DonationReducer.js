@@ -4,7 +4,7 @@ export const initialDonationState = {
   subscription: '',
   cardNumber: '4242424242424242',
   expMonth: '5',
-  expYear: '2023',
+  expYear: '23',
   cvc: '123',
   amount: '',
 };
