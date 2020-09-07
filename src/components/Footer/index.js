@@ -26,13 +26,14 @@ const Footer = () => {
                 <Link to='/'>Cookies</Link>
               </li>
               <li>
-                <a
+                {/* <a
                   href='https://github.com/rofazayn/CharityPal'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   Github
-                </a>
+                </a> */}
+                <Link to='/'>Help!</Link>
               </li>
             </ul>
           </div>
