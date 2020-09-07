@@ -20,7 +20,7 @@ const News = () => {
     setIsFetching(true);
     try {
       const fetchedNews = await fetch(
-        `http://localhost:5000/charitypal-d3b98/europe-west1/fetchNews`,
+        `https://fast-retreat-57467.herokuapp.com/news`,
         {
           headers: {
             origin: 'x-requested-with',
@@ -89,10 +89,9 @@ const News = () => {
                     ) : null
                   }
                   disabled={isFetching}
-                  disabled={true}
                 >
-                  Currently Down!
-                  {/* Let's read the news */}
+                  {/* Currently Down! */}
+                  Let's read the news
                 </CPButton>
               </div>
             )}
